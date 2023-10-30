@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { Color } from '../styles/Color';
+import { View, Image, TouchableOpacity } from 'react-native';
 
-import { PageProps } from './Props'
+import { NavProps } from './Props'
+import { toMain, toProfile } from '../Navigations';
 
-interface OptionProps {
+import { styles } from '../styles/components/NavigationBar';
+
+
+export const Option = ({
+  icon, 
+  onPress
+} : {
   icon: any;
   onPress: () => void;
-}
-
-export const Option: React.FC<OptionProps> = ({ icon, onPress }) => {
+}) => {
   const [isPressed, setIsPressed] = useState(false);
   return (
     <TouchableOpacity 
@@ -22,74 +26,17 @@ export const Option: React.FC<OptionProps> = ({ icon, onPress }) => {
   );
 };
 
-export const NavigationBar: React.FC<PageProps> = ( { navigation } ) => {
-  const toMain = () => {
-    navigation.navigate('Main');
-  };
-  const toProfile = () => {
-    navigation.navigate('Profile');
-  };
+export const NavigationBar: React.FC<NavProps> = ({ navigation }) => {
   return (
     <TouchableOpacity style={styles.container} disabled={true}>
       <View style={styles.iconsContainer}>
-        <Option icon={require("../../assets/home.png")} onPress={toMain}></Option>
-        <Option icon={require("../../assets/community.png")} onPress={toMain}></Option>
-        <Option icon={require("../../assets/more.png")} onPress={toMain}></Option>
-        <Option icon={require("../../assets/profile.png")} onPress={toProfile}></Option>
-        <Option icon={require("../../assets/settings.png")} onPress={toMain}></Option>
+        <Option icon={require("../../assets/home.png")} onPress={() => toMain({ navigation })}></Option>
+        <Option icon={require("../../assets/community.png")} onPress={() => toMain({ navigation })}></Option>
+        <Option icon={require("../../assets/more.png")} onPress={() => toMain({ navigation })}></Option>
+        <Option icon={require("../../assets/profile.png")} onPress={() => toProfile({ navigation })}></Option>
+        <Option icon={require("../../assets/settings.png")} onPress={() => toMain({ navigation })}></Option>
       </View>
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-
-    width: "100%",
-    height: 110,
-    backgroundColor: Color.lightModeWhite,
-
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    
-    justifyContent: 'center',
-    
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-  },
-  iconsContainer: {
-    width: "80%",
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignSelf: 'center',
-    marginBottom: '4%'
-  },
-  icon: {
-    width: 32,
-    height: 32,
-    // opacity: 0.1,
-    zIndex: 1,
-  },
-  bg: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 24,
-  },
-  bgActive: {
-    opacity: 0.2,
-    backgroundColor: '#F3F3F3',
-  },
-  bgInactive: {
-    backgroundColor: 'transparent',
-  },
-  button: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-  }
-});

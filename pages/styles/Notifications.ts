@@ -1,15 +1,14 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 // styles
-import { Color } from "./Color";
-import { FontFamily, FontSize } from "./Font";
+import { Color } from "./global/Color";
+import { FontFamily, FontSize } from "./global/Font";
 
 
 export const styles = StyleSheet.create({
   // containers
   header: {
-    marginTop: "12%",
-    marginHorizontal: "8%"
+    paddingTop: "12%",
   },
   main: {
     minHeight: Dimensions.get('window').height,

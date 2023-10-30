@@ -1,13 +1,17 @@
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
-import { Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { Text, StyleProp, ViewStyle } from 'react-native';
 
-interface textProps {
+import { styles } from '../styles/components/GradientText';
+
+
+export const GradientText= ({
+  text, 
+  style
+}: {
   text: string | undefined;
   style?: StyleProp<ViewStyle>;
-}
-
-export const GradientText: React.FC<textProps> = ({ text, style }) => {  // scheme prop을 인자로 받습니다.
+}) => {
   return (
       <MaskedView maskElement={
         <Text style={[style, { backgroundColor: "transparent" }]} numberOfLines={1}>{text}</Text>
@@ -24,14 +28,3 @@ export const GradientText: React.FC<textProps> = ({ text, style }) => {  // sche
   );
 }
 
-const styles = StyleSheet.create({
-  // text
-  text: {
-    fontSize: 60,
-    marginBottom: 4,
-    backgroundColor: 'transparent'
-  },
-  gradientText: {
-    borderRadius: 30,
-  },
-});

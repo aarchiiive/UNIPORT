@@ -7,17 +7,25 @@ import {
   useColorScheme
 } from "react-native";
 
-import { PageProps } from './components/Props';
+import { NavProps } from './components/Props';
 import { ToggleList } from "./components/ToggleList";
 import { HomeHeader } from "./components/Logo";
 import { NavigationBar } from "./components/NavigationBar";
-import { GradientButton, WeeklyLuckyDrawButton, UNIPhoneButton, UNIStayButton, UNIVisaButton, VisaStatusButton } from './components/Button';
+import { toNotifications } from "./Navigations";
+import { 
+  GradientButton, 
+  WeeklyLuckyDrawButton, 
+  UNIPhoneButton, 
+  UNIStayButton, 
+  UNIVisaButton, 
+  VisaStatusButton 
+} from './components/Button';
 
 // styles
 import { styles } from "./styles/Main";
 
 
-const Main: React.FC<PageProps> = ({ navigation }) => {
+const Main: React.FC<NavProps> = ({ navigation }) => {
   const scheme = useColorScheme();
   // const scheme = 'dark';
   const viewStyles = [
@@ -28,10 +36,6 @@ const Main: React.FC<PageProps> = ({ navigation }) => {
     Alert.alert('UNIPORT');
   };
 
-  const toNotifications = () => {
-    navigation.navigate('Notifications');
-  };
-
   const daysInKorea = "00";
   const phoneNumber = "010-0000-0000"
   const address = "00시 00구 00동 000아파트"
@@ -39,26 +43,12 @@ const Main: React.FC<PageProps> = ({ navigation }) => {
   const visaType = "D2";
   const visaExpireDate = "00";
 
-  const addressList = [
-    "서울시 강남구 역삼동 101아파트",
-    "부산시 해운대구 중동 202아파트",
-    "인천시 연수구 송도동 303아파트",
-    "대구시 수성구 범어동 404아파트"
-  ];
-
-  const phoneNumberList = [
-    "010-0000-0000",
-    "010-1111-1111",
-    "010-2222-2222",
-    "010-3333-3333"
-  ];
-
   return (
     <View>
       <ScrollView style={viewStyles}>
         <View style={styles.mainView}>
           <View style={styles.horizontalView}>
-            <HomeHeader onPress={toNotifications} />
+            <HomeHeader onPress={() => toNotifications({ navigation })} />
           </View>
 
           <View style={styles.horizontalView}>
@@ -79,7 +69,7 @@ const Main: React.FC<PageProps> = ({ navigation }) => {
             <Text style={styles.barTitle}>{"My Address in Korea"}</Text>
           </View>
           <View style={styles.horizontalView}>
-            <ToggleList infoList={addressList} onPress={testPress} />
+            <ToggleList content={address} onPress={testPress} />
           </View>
 
           {/* My Phone Number */}
@@ -87,7 +77,7 @@ const Main: React.FC<PageProps> = ({ navigation }) => {
             <Text style={styles.barTitle}>{"My Phone Number"}</Text>
           </View>
           <View style={styles.horizontalView}>
-            <ToggleList infoList={phoneNumberList} onPress={testPress} />
+            <ToggleList content={phoneNumber} onPress={testPress} />
           </View>
 
           <View style={styles.div}></View>

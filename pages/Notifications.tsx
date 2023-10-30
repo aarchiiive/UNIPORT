@@ -1,7 +1,15 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, Alert, TouchableOpacity, useColorScheme } from 'react-native';
+import { 
+  View, 
+  Text, 
+  Image, 
+  Alert, 
+  ScrollView, 
+  TouchableOpacity, 
+  useColorScheme 
+} from 'react-native';
 
-import { PageProps } from './components/Props';
+import { NavProps } from './components/Props';
 import { Header } from './components/Header'
 
 // styles
@@ -38,11 +46,7 @@ const Notice = ({
   )
 };
 
-const Notifications: React.FC<PageProps> = ({ navigation }) => {
-  const scheme = useColorScheme();
-  // const scheme = 'dark';
-  const viewStyles = scheme === 'dark' ? styles.darkView : styles.lightView;
-
+const Notifications: React.FC<NavProps> = ({ navigation }) => {
   const title = 'Notifications';
 
   // variables

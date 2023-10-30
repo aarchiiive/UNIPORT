@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { Color } from '../styles/Color';
-import { FontFamily, FontSize } from '../styles/Font';
+import { Color } from './Color';
+import { FontFamily, FontSize } from './Font';
 
 
 export const globalStyles = StyleSheet.create({

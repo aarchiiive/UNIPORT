@@ -1,15 +1,15 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 // styles
-import { Color } from "./Color";
-import { FontFamily, FontSize } from "./Font";
+import { Color } from "./global/Color";
+import { FontFamily, FontSize } from "./global/Font";
 
 
 const commonStyles = StyleSheet.create({
   container: {
     width: "100%",
     paddingVertical: 20,
-    backgroundColor: Color.lightModeBackground,
+    backgroundColor: Color.lightModeWhite,
     overflow: 'visible',
     zIndex: 0,
   },
@@ -25,8 +25,10 @@ const commonStyles = StyleSheet.create({
 export const styles = StyleSheet.create({
   // containers
   header: {
-    marginTop: "12%",
-    marginHorizontal: "8%",
+    // marginTop: "12%",
+    // marginHorizontal: "8%",
+    paddingTop: "12%",
+    backgroundColor: Color.lightModeWhite,
   },
   main: {
     minHeight: Dimensions.get('window').height,

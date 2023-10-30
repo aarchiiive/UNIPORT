@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { Color } from "./Color";
-import { FontFamily, FontSize } from "./Font";
+import { Color } from "../global/Color";
+import { FontFamily, FontSize } from "../global/Font";
 
 
 export const styles = StyleSheet.create({
@@ -36,5 +36,6 @@ export const styles = StyleSheet.create({
     icon: {
       width: 36,
       height: 36,
+      marginHorizontal: 20,
     },
   });

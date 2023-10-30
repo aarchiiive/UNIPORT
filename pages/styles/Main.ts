@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 // styles
-import { Color } from "../styles/Color";
-import { FontFamily, FontSize } from "../styles/Font";
+import { Color } from "./global/Color";
+import { FontFamily, FontSize } from "./global/Font";
 
 const globalMargin = 20;
 

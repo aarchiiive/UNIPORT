@@ -1,6 +1,6 @@
 import { NavigationProp } from '@react-navigation/native';
 
-export interface PageProps {
+export interface NavProps {
   navigation: NavigationProp<any>;
 }
 

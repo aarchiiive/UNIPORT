@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { FontFamily, FontSize } from './Font';
-import { globalStyles } from './GlobalStyles';
+import { FontFamily, FontSize } from '../global/Font';
+import { globalStyles } from '../global/GlobalStyles';
 
 export const styles = StyleSheet.create({
   // text styles

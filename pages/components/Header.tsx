@@ -1,9 +1,8 @@
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import { View, Text, Image, TouchableOpacity, useColorScheme } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import { styles } from '../styles/Header';
-import { globalStyles } from '../styles/GlobalStyles';
+import { styles } from '../styles/components/Header';
+import { globalStyles } from '../styles/global/GlobalStyles';
 
 
 const BackButton = ({
@@ -15,7 +14,7 @@ const BackButton = ({
 }) => {
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Image source={source}></Image>
+      <Image source={source} style={styles.icon}></Image>
     </TouchableOpacity>
   );
 };

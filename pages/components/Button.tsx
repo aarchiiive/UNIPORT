@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity, useColorScheme, StyleProp, ViewStyle  } from 'react-native';
 
 import { GradientText } from './GraidentText';
-import { globalStyles } from '../styles/GlobalStyles';
-import { styles } from '../styles/Button';
+import { globalStyles } from '../styles/global/GlobalStyles';
+import { styles } from '../styles/components/Button';
 
 const getStylesByScheme = () => {
   const scheme = useColorScheme();

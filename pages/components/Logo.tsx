@@ -1,14 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Image, useColorScheme } from "react-native";
-import { Color } from '../styles/Color';
-import { FontFamily, FontSize } from '../styles/Font';
+import { View, TouchableOpacity, Text, Image } from "react-native";
 
-interface noticeProps {
-  // mainText: string;
-  onPress: () => void;
-};
+import { styles } from '../styles/components/Logo'
 
-export const HomeHeader: React.FC<noticeProps> = ({ onPress }) => {
+
+export const HomeHeader = ({ onPress } : { onPress: () => void; }) => {
   return (
     <View style={styles.mainView}>
       <View style={styles.textLogoView}>
@@ -24,42 +20,3 @@ export const HomeHeader: React.FC<noticeProps> = ({ onPress }) => {
 };
 
 
-const styles = StyleSheet.create({
-  // views
-  mainView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 10,
-    alignSelf: 'center',
-  },
-  textLogoView: {
-    flexDirection: 'row',
-  },
-  spaceView: {
-    width: "100%", // 원하는 간격 크기로 조정
-  },
-
-  // text
-  text: {
-    fontFamily: FontFamily.poppinsSemiBold,
-    fontSize: FontSize.size_2xl,
-    marginLeft: 10,
-  },
-
-  // notice icon
-  notice: {
-    width: 24,
-    height: 24,
-  },
-  noticeButton: {
-    marginTop: 1,
-    marginLeft: 'auto', // 오른쪽으로 정렬
-  },
-
-  // logo size
-  small: {
-    width: 16.75,
-    height: 24.316,
-    marginTop: 2,
-  },
-});

@@ -1,8 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ScrollView, View, Text, Image, Animated, TouchableOpacity, StyleSheet, useColorScheme, Easing, EasingFunction } from 'react-native';
+import { 
+  View, 
+  Text, 
+  Image, 
+  Animated, 
+  ScrollView, 
+  TouchableOpacity, 
+  Easing, 
+} from 'react-native';
 
-import { PageProps } from './components/Props';
+import { NavProps } from './components/Props';
 import { Header } from './components/Header'
+import { createAnimation } from './components/Animations';
 
 import { styles } from './styles/Profile'
 
@@ -42,22 +51,6 @@ const renderContent = (content: string, n: number, split: boolean) => {
   } else {
     return <Text style={styles.infoContent}>{content}</Text>;
   }
-};
-
-
-const createAnimation = (
-  ref: Animated.Value,
-  toValue: number,
-  duration: number,
-  easing: EasingFunction,
-  useNativeDriver: boolean = false
-): Animated.CompositeAnimation => {
-  return Animated.timing(ref, {
-    toValue,
-    duration,
-    easing,
-    useNativeDriver,
-  });
 };
 
 
@@ -156,31 +149,29 @@ const PassportInfoBox = ({
       content: string }[]
   }) => {
 
-  const closedContentHeight = 0;
-  const openedContentHeight = 280;
-  const closedBoxHeight = 400;
-  const openedBoxHeight = openedContentHeight + closedBoxHeight;
+  const contentHeights = [0, 280];
+  const boxHeights = [400, 400 + contentHeights[1]];
 
   const duration = 600;
   const easing = Easing.bezier(0.25, 1, 0.5, 1);
 
   const [isOpen, setIsOpen] = useState(false);
-  const rotateAnim = useRef(new Animated.Value(0)).current;
-  const heightAnim = useRef(new Animated.Value(closedBoxHeight)).current;
-  const additionalContentHeight = useRef(new Animated.Value(0)).current;
-  const additionalContentOpacity = useRef(new Animated.Value(0)).current;
+  const rotation = useRef(new Animated.Value(0)).current;
+  const height = useRef(new Animated.Value(boxHeights[0])).current;
+  const contentHeight = useRef(new Animated.Value(contentHeights[0])).current;
+  const contentOpacity = useRef(new Animated.Value(0)).current;
 
   const expand = () => {
     Animated.parallel([
-      createAnimation(rotateAnim, isOpen ? 0 : 1, duration, easing, true),
-      createAnimation(heightAnim, isOpen ? closedBoxHeight : openedBoxHeight, duration, easing),
-      createAnimation(additionalContentHeight, isOpen ? closedContentHeight : openedContentHeight, duration, easing),
-      createAnimation(additionalContentOpacity, isOpen ? 0 : 1, duration, easing),
+      createAnimation(rotation, isOpen ? 0 : 1, duration, easing, true),
+      createAnimation(height, isOpen ? boxHeights[0] : boxHeights[1], duration, easing),
+      createAnimation(contentHeight, isOpen ? contentHeights[0] : contentHeights[1], duration, easing),
+      createAnimation(contentOpacity, isOpen ? 0 : 1, duration, easing),
     ]).start();
     setIsOpen(!isOpen);
   };
 
-  const rotateData = rotateAnim.interpolate({
+  const rotateData = rotation.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '180deg']
   });
@@ -189,14 +180,14 @@ const PassportInfoBox = ({
   const additionalItems = passportInfo.slice(4);
 
   return (
-    <Animated.View style={[styles.passportInfoContainer, { height: heightAnim }]}>
+    <Animated.View style={[styles.passportInfoContainer, { height: height }]}>
       <View>
         <InfoTitle title={"Passport info"} />
         {mainContent.map((info, index) => (
           <UserInfoField key={index} name={info.name} content={info.content} />
         ))}
       </View>
-      <Animated.View style={{ height: additionalContentHeight, opacity: additionalContentOpacity }}>
+      <Animated.View style={{ height: contentHeight, opacity: contentOpacity }}>
         {additionalItems.map((info, index) => (
           <UserInfoField key={index} name={info.name} content={info.content} />
         ))}
@@ -212,9 +203,10 @@ const PassportInfoBox = ({
 
 
 const ARCInfoBox = ({
-  ARCInfoList }: {
-    ARCInfoList: { name: string, content: string }[]
-  }) => {
+  ARCInfoList
+}: {
+  ARCInfoList: { name: string, content: string }[]
+}) => {
 
   return (
     <View style={[styles.ARCInfoContainer]}>
@@ -229,7 +221,7 @@ const ARCInfoBox = ({
 };
 
 
-const Profile: React.FC<PageProps> = ({ navigation }) => {
+const Profile: React.FC<NavProps> = ({ navigation }) => {
   const title = "My Profile";
 
   const userInfoList = [

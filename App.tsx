@@ -5,11 +5,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './pages/Home'; 
 import Start from './pages/Start'; 
 import Login from './pages/Login';
+import Welcome from './pages/Welcome';
+import PolicyAgreement from './pages/PolicyAgreement';
+import IDScan from './pages/IDScan';
 import SignUp from './pages/SignUp';
 import Main from './pages/Main'; 
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
-import PolicyAgreement from './pages/PolicyAgreement';
 
 
 const Stack = createStackNavigator();
@@ -21,7 +23,9 @@ const App = () => {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
         <Stack.Screen name="Start" component={Start} options={{ headerShown: false }}/>
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+        <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }}/>
         <Stack.Screen name="PolicyAgreement" component={PolicyAgreement} options={{ headerShown: false }}/>
+        <Stack.Screen name="IDScan" component={IDScan} options={{ headerShown: false }}/>
         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
         <Stack.Screen name="Notifications" component={Notifications} options={{ headerShown: false }}/>

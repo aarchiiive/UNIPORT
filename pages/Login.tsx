@@ -11,7 +11,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { Alert } from "./components/Alert";
 import { NavProps } from './components/Props';
-import { toMain, toSignUp } from "./Navigations";
+import { toWelcome, toSignUp } from "./Navigations";
 import { styles } from './styles/Login';
 
 const EmailBox = ({ onEmailChange }: { onEmailChange: (text: string) => void; }) => {
@@ -154,7 +154,7 @@ const Login: React.FC<NavProps> = ({ navigation }) => {
 
   const handleLogin = () => {
     if (filled == 0) {
-      toMain({ navigation });
+      toWelcome({ navigation });
     } else {
       setAlert(getAlertMessage(filled));
       displayAlert();

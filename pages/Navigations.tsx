@@ -11,8 +11,16 @@ export const toLogin = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('Login');
 };
 
+export const toWelcome = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('Welcome');
+};
+
 export const toPolicyAgreement = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('PolicyAgreement');
+};
+
+export const toIDScan = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('IDScan');
 };
 
 export const toSignUp = ({ navigation }: { navigation: any; }) => {

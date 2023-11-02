@@ -7,14 +7,15 @@ import {
 } from "react-native";
 
 import { NavProps } from './components/Props';
-import { toStart } from "./Navigations";
+import { toStart, toPassportScan } from "./Navigations";
 
 import { styles } from './styles/Home';
 
 const Home: React.FC<NavProps> = ({ navigation }) => {
   const scheme = useColorScheme();
   const backgroundStyles = [
-    scheme === 'dark' ? styles.darkView : styles.lightView
+    // scheme === 'dark' ? styles.darkView : styles.lightView
+    styles.lightView
   ];
   return (
     <View style={backgroundStyles}>

@@ -29,7 +29,8 @@ const Main: React.FC<NavProps> = ({ navigation }) => {
   const scheme = useColorScheme();
   // const scheme = 'dark';
   const viewStyles = [
-    scheme === 'dark' ? styles.darkView : styles.lightView
+    // scheme === 'dark' ? styles.darkView : styles.lightView
+    styles.lightView
   ];
 
   const testPress = () => {

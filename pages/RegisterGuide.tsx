@@ -9,7 +9,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import { NavProps } from './components/Props';
-import { toMain, toSignUp } from "./Navigations";
+import { toPassportScan } from "./Navigations";
 import { styles } from './styles/RegisterGuide';
 
 const Description = () => {
@@ -61,7 +61,7 @@ const RegisterGuide: React.FC<NavProps> = ({ navigation }) => {
       <Description />
       <View style={styles.buttonArea}>
         <Laterutton onPress={() => navigation.goBack()} />
-        <NextButton onPress={() => toSignUp({ navigation })} />
+        <NextButton onPress={() => toPassportScan({ navigation })} />
       </View>
     </View>
   );

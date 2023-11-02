@@ -23,8 +23,8 @@ export const toRegisterGuide = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('RegisterGuide');
 };
 
-export const toIDScan = ({ navigation }: { navigation: any; }) => {
-  navigation.navigate('IDScan');
+export const toPassportScan = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('PassportScan');
 };
 
 export const toSignUp = ({ navigation }: { navigation: any; }) => {

@@ -35,8 +35,8 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires access to the camera to scan passports.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Fonts/Poppins-Bold.ttf</string>

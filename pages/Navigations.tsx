@@ -19,6 +19,10 @@ export const toPolicyAgreement = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('PolicyAgreement');
 };
 
+export const toRegisterGuide = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('RegisterGuide');
+};
+
 export const toIDScan = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('IDScan');
 };

@@ -7,6 +7,7 @@ import Start from './pages/Start';
 import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 import PolicyAgreement from './pages/PolicyAgreement';
+import RegisterGuide from './pages/RegisterGuide';
 import IDScan from './pages/IDScan';
 import SignUp from './pages/SignUp';
 import Main from './pages/Main'; 
@@ -25,6 +26,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }}/>
         <Stack.Screen name="PolicyAgreement" component={PolicyAgreement} options={{ headerShown: false }}/>
+        <Stack.Screen name="RegisterGuide" component={RegisterGuide} options={{ headerShown: false }}/>
         <Stack.Screen name="IDScan" component={IDScan} options={{ headerShown: false }}/>
         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>

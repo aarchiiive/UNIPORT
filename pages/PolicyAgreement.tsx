@@ -8,7 +8,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import { NavProps } from './components/Props';
-import { toMain, toSignUp } from "./Navigations";
+import { toRegisterGuide } from "./Navigations";
 import { styles } from './styles/PolicyAgreement';
 
 
@@ -67,7 +67,7 @@ const PolicyAgreement: React.FC<NavProps> = ({ navigation }) => {
       <PolicyArea />
       <View style={styles.buttonArea}>
         <DeclineButton onPress={() => navigation.goBack()} />
-        <AceeptButton onPress={() => toMain({ navigation })} />
+        <AceeptButton onPress={() => toRegisterGuide({ navigation })} />
       </View>
 
     </View>

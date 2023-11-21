@@ -14,6 +14,8 @@ import { NavProps } from './components/Props';
 import { toWelcome, toSignUp } from "./Navigations";
 import { styles } from './styles/Login';
 
+import { API_ENDPOINTS } from "../APIConfig";
+
 const EmailBox = ({ onEmailChange }: { onEmailChange: (text: string) => void; }) => {
   const [email, setEmail] = useState("");
 

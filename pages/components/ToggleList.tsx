@@ -24,15 +24,18 @@ const getStylesByScheme = () => {
 
   const containerStyles = [
     styles.container,
+    // isDarkMode ? globalStyles.darkButton : globalStyles.lightButton
     isDarkMode ? globalStyles.darkButton : globalStyles.lightButton
   ];
   const buttonStyles = [
     styles.button,
-    isDarkMode ? globalStyles.darkButton : globalStyles.lightButton
+    // isDarkMode ? globalStyles.darkButton : globalStyles.lightButton
+    globalStyles.lightButton
   ];
   const contentStyles = [
     styles.infoList,
-    isDarkMode ? styles.darkText : styles.lightText
+    // isDarkMode ? styles.darkText : styles.lightText
+    styles.lightText
   ];
 
   return [containerStyles, buttonStyles, contentStyles, expandIcon]

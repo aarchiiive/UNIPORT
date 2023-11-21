@@ -14,6 +14,9 @@ import Main from './pages/Main';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
 
+import DeveloperMode from './pages/DeveloperMode';
+import UNIStay from './pages/UNIStay';
+
 
 const Stack = createStackNavigator();
 
@@ -32,6 +35,10 @@ const App = () => {
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
         <Stack.Screen name="Notifications" component={Notifications} options={{ headerShown: false }}/>
         <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
+        
+        <Stack.Screen name="DeveloperMode" component={DeveloperMode} options={{ headerShown: false }}/>
+
+        <Stack.Screen name="UNIStay" component={UNIStay} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

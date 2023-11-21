@@ -16,7 +16,11 @@ const PolicyArea = () => {
   const policyHeader = ["1. Terms and Conditions"]
   const policyContent = ["Terms and Conditions Terms and Conditions Terms and Conditions Terms and Conditions Terms and Conditions"]
   return (
-    <ScrollView style={styles.policyScollView}>
+    <ScrollView 
+    style={styles.policyScollView}
+    contentContainerStyle={styles.policyContentContainer}
+    showsVerticalScrollIndicator={false}
+    >
       <Text style={styles.policyHeader}>{policyHeader[0]}</Text>
       <Text style={styles.policyContent}>{policyContent[0]}</Text>
       <Text style={styles.policyHeader}>{policyHeader[0]}</Text>

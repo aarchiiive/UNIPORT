@@ -21,8 +21,12 @@ export const styles = StyleSheet.create({
     height: 500,
     borderRadius: 20,
     backgroundColor: Color.lightModeWhite,
-    paddingVertical: 30,
+    // paddingVertical: 30,
     paddingHorizontal: 20,
+    
+  },
+  policyContentContainer: {
+    paddingVertical: 30,
   },
   policyHeader: {
     fontSize: 14,

@@ -64,3 +64,9 @@ yarn-error.log
 
 # testing
 /coverage
+
+# ssh key
+*.pem
+
+# API ENDPOINT
+APIConfig.tsx

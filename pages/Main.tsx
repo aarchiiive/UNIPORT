@@ -1,9 +1,9 @@
-import React from "react";
-import { 
-  View, 
-  ScrollView, 
-  Alert, 
-  Text, 
+import React, { useState } from "react";
+import {
+  View,
+  ScrollView,
+  Alert,
+  Text,
   useColorScheme
 } from "react-native";
 
@@ -11,14 +11,17 @@ import { NavProps } from './components/Props';
 import { ToggleList } from "./components/ToggleList";
 import { HomeHeader } from "./components/Logo";
 import { NavigationBar } from "./components/NavigationBar";
-import { toNotifications } from "./Navigations";
 import { 
-  GradientButton, 
-  WeeklyLuckyDrawButton, 
-  UNIPhoneButton, 
-  UNIStayButton, 
-  UNIVisaButton, 
-  VisaStatusButton 
+  toNotifications,
+  toUNIStay,
+ } from "./Navigations";
+import {
+  GradientButton,
+  WeeklyLuckyDrawButton,
+  UNIPhoneButton,
+  UNIStayButton,
+  UNIVisaButton,
+  VisaStatusButton
 } from './components/Button';
 
 // styles
@@ -27,22 +30,41 @@ import { styles } from "./styles/Main";
 
 const Main: React.FC<NavProps> = ({ navigation }) => {
   const scheme = useColorScheme();
-  // const scheme = 'dark';
+
+  // const daysInKorea = "00";
+  const phoneNumber = "010-0000-0000"
+  const address = "00시 00구 00동 000아파트"
+  const visaStatus = "D-4";
+  const visaType = "D2";
+  const visaExpireDate = "00";
+
+  const [daysInKorea, setDaysInKorea] = useState(80);
+  const [daysInKoreaText, setdaysInKoreaText] = useState({ mainText: daysInKorea.toString(), subText: "Days in Korea", mode: "days" });
+  const [daysInKoreaFontSize, setDaysInKoreaFontSize] = useState(64);
+
   const viewStyles = [
     // scheme === 'dark' ? styles.darkView : styles.lightView
     styles.lightView
   ];
 
   const testPress = () => {
-    Alert.alert('UNIPORT');
+    // Alert.alert('UNIPORT');
   };
 
-  const daysInKorea = "00";
-  const phoneNumber = "010-0000-0000"
-  const address = "00시 00구 00동 000아파트"
-  const visaStatus = "D-4";
-  const visaType = "D2";
-  const visaExpireDate = "00";
+  const toggleTime = () => {
+    console.log(daysInKoreaText.mode);
+    if (daysInKoreaText.mode === "days") {
+      const hours = daysInKorea * 24;
+      setdaysInKoreaText({ mainText: hours.toString(), subText: "Hours in Korea", mode: "hours" });
+      if (hours.toString().length > 2) {
+        setDaysInKoreaFontSize(50); 
+      }
+    } else if (daysInKoreaText.mode === "hours") {
+      setdaysInKoreaText({ mainText: daysInKorea.toString(), subText: "Days in Korea", mode: "days" });
+      setDaysInKoreaFontSize(64);
+    }
+  };
+
 
   return (
     <View>
@@ -53,14 +75,15 @@ const Main: React.FC<NavProps> = ({ navigation }) => {
           </View>
 
           <View style={styles.horizontalView}>
-            <GradientButton 
-            mainText={daysInKorea} 
-            subText="Days in Korea" 
-            onPress={testPress} />
-            <WeeklyLuckyDrawButton 
-            image={require("../assets/giftdynamicclay.png")} 
-            subText="Weekly Lucky Draw" 
-            onPress={testPress} />
+            <GradientButton
+              mainText={daysInKoreaText.mainText}
+              subText={daysInKoreaText.subText}
+              fontSize={daysInKoreaFontSize}
+              onPress={toggleTime} />
+            <WeeklyLuckyDrawButton
+              image={require("../assets/giftdynamicclay.png")}
+              subText="Weekly Lucky Draw"
+              onPress={testPress} />
           </View>
 
           <View style={styles.div} />
@@ -82,13 +105,13 @@ const Main: React.FC<NavProps> = ({ navigation }) => {
           </View>
 
           <View style={styles.div}></View>
-          
+
           {/* UNIPORT Services */}
           <View style={styles.horizontalView}>
             <UNIStayButton
               image={require("../assets/location.png")}
               subText="UNIStay"
-              onPress={testPress} />
+              onPress={() => toUNIStay({navigation})} />
             <View style={styles.verticalView}>
               <UNIPhoneButton
                 image={require("../assets/phone.png")}
@@ -119,7 +142,7 @@ const Main: React.FC<NavProps> = ({ navigation }) => {
       </ScrollView>
       {/* Navigation Bar */}
       <View style={styles.navigationBar}>
-        <NavigationBar navigation={navigation}/>
+        <NavigationBar navigation={navigation} />
       </View>
     </View>
   );

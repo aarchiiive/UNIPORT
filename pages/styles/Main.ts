@@ -34,6 +34,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  // residence time
+  residenceTimeText: {
+    fontFamily: FontFamily.poppinsSemiBold,
+    fontSize: 64,
+  },
+
   // div
   div: {
     width: "100%",

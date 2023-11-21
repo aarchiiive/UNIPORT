@@ -8,13 +8,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import LinearGradient from 'react-native-linear-gradient';
 
-import {
-  useAnimatedStyle,
-  interpolateColor,
-} from "react-native-reanimated";
-
-import BottomSheet, { BottomSheetScrollView, BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { Camera, useCameraDevice } from 'react-native-vision-camera'
 
 import { NavProps } from './components/Props';
@@ -48,13 +44,28 @@ const PassportInfoBox = ({ name, content }: { name: string; content: string; }) 
   );
 };
 
-const PassportInfoTab = () => {
+const NextButton = ({ onPress }: { onPress: () => void; }) => {
+  return (
+    <TouchableOpacity style={styles.nextButton} onPress={onPress}>
+      <LinearGradient
+        colors={['#015DFE', '#00AEFE']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.linearGradient}
+      >
+        <Text style={styles.nextButtonText}>{"Next"}</Text>
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+};
+
+const PassportInfoTab = ({ onPress }: { onPress: () => void; }) => {
   const hideOpacity = 0.05;
   const sheetOpacity = useRef(new Animated.Value(hideOpacity)).current;
   const backdropOpacity = useRef(new Animated.Value(0)).current;
 
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['10%', '42%'], []);
+  const snapPoints = useMemo(() => ['14%', '42%'], []);
   const handleSheetChanges = useCallback((index: number) => {
     Animated.timing(sheetOpacity, {
       toValue: index === 0 ? 1 : hideOpacity,
@@ -75,7 +86,11 @@ const PassportInfoTab = () => {
     name: "Uniport Official Korea",
     number: "M12345678",
     birthday: "2000.01.01",
-    nation: "Republic of Korea",
+    nationality: "Republic of Korea",
+    placeOfBirth: "Republic of Korea",
+    sex: "Male",
+    dateOfIssue: "2021.01.01",
+    dateOfExpiry: "2031.01.01",
   };
 
   return (
@@ -94,13 +109,21 @@ const PassportInfoTab = () => {
         onAnimate={handleSheetChanges}
         containerStyle={styles.passportInfoTab}
       >
-        <BottomSheetScrollView contentContainerStyle={styles.passportInfoScroll}>
+        <BottomSheetScrollView 
+        contentContainerStyle={styles.passportInfoScroll}
+        showsVerticalScrollIndicator={false}
+        >
           <Animated.View style={{ opacity: sheetOpacity }}>
             <Text style={styles.passportInfoTitle}>{"Passport Info"}</Text>
             <PassportInfoBox name={"Full Name"} content={passportInfo.name} />
             <PassportInfoBox name={"Passport no."} content={passportInfo.number} />
             <PassportInfoBox name={"Date of birth"} content={passportInfo.birthday} />
-            <PassportInfoBox name={"Nationality"} content={passportInfo.nation} />
+            <PassportInfoBox name={"Nationality"} content={passportInfo.nationality} />
+            <PassportInfoBox name={"Place of birth"} content={passportInfo.placeOfBirth} />
+            <PassportInfoBox name={"Sex"} content={passportInfo.sex} />
+            <PassportInfoBox name={"Date of issue"} content={passportInfo.dateOfIssue} />
+            <PassportInfoBox name={"Date of expiration"} content={passportInfo.dateOfExpiry} />
+            <NextButton onPress={onPress} />
           </Animated.View>
         </BottomSheetScrollView>
       </BottomSheet>
@@ -130,7 +153,7 @@ const PassportScan: React.FC<NavProps> = ({ navigation }) => {
       <ScrollView style={styles.scrollView}>
         <CameraView />
       </ScrollView>
-      <PassportInfoTab />
+      <PassportInfoTab onPress={() => toMain({navigation})}/>
     </View>
   );
 };

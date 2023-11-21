@@ -1,6 +1,6 @@
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
-import { Text, StyleProp, ViewStyle } from 'react-native';
+import { Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
 
 import { styles } from '../styles/components/GradientText';
 
@@ -10,7 +10,7 @@ export const GradientText= ({
   style
 }: {
   text: string | undefined;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
 }) => {
   return (
       <MaskedView maskElement={

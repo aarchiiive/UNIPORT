@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, useColorScheme, StyleProp, ViewStyle  } from 'react-native';
+import { 
+  View, 
+  Image, 
+  Text, 
+  TextStyle,
+  TouchableOpacity, 
+  useColorScheme, 
+  StyleProp, 
+  ViewStyle  } from 'react-native';
 
 import { GradientText } from './GraidentText';
 import { globalStyles } from '../styles/global/GlobalStyles';
@@ -7,8 +15,10 @@ import { styles } from '../styles/components/Button';
 
 const getStylesByScheme = () => {
   const scheme = useColorScheme();
-  const textMode = scheme === 'dark' ? globalStyles.darkText : globalStyles.lightText;
-  const buttonMode = scheme === 'dark' ? globalStyles.darkButton : globalStyles.lightButton;
+  // const textMode = scheme === 'dark' ? globalStyles.darkText : globalStyles.lightText;
+  // const buttonMode = scheme === 'dark' ? globalStyles.darkButton : globalStyles.lightButton;
+  const textMode = globalStyles.lightText;
+  const buttonMode = globalStyles.lightButton;
   return { textMode, buttonMode };
 };
 
@@ -16,6 +26,7 @@ interface ButtonProps {
   mainText?: string;
   subText?: string;
   image?: any;
+  fontSize?: number; 
   onPress?: () => void;
 }
 
@@ -28,15 +39,16 @@ interface VisaStatusProps {
 
 export const GradientButton: React.FC<ButtonProps> = ({ 
   mainText, 
-  subText , 
+  subText, 
+  fontSize,
   onPress 
 }) => {
   const { textMode, buttonMode } = getStylesByScheme();
 
   return (
     <TouchableOpacity style={[styles.gradientButton, buttonMode]} onPress={onPress}>
-      <GradientText text={mainText} style={styles.mainText}></GradientText>
-      <Text style={[styles.gradientSubText, textMode]}>{subText}</Text>
+      <GradientText text={mainText} style={{ ...styles.mainText, fontSize, marginBottom: 20 }}></GradientText>
+      <Text style={[styles.gradientSubText, textMode, { position: 'absolute', bottom: 20 }]}>{subText}</Text>
     </TouchableOpacity>
   );
 };

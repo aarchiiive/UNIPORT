@@ -3,6 +3,10 @@ export const toHome = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('Home');
 };
 
+export const toDeveloperMode = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('DeveloperMode');
+};
+
 export const toStart = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('Start');
 };
@@ -41,4 +45,8 @@ export const toNotifications = ({ navigation }: { navigation: any; }) => {
 
 export const toProfile = ({ navigation }: { navigation: any; }) => {
   navigation.navigate('Profile');
+};
+
+export const toUNIStay = ({ navigation }: { navigation: any; }) => {
+  navigation.navigate('UNIStay');
 };

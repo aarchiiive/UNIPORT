@@ -1,13 +1,15 @@
 import * as React from "react";
-import { 
-  Image, 
-  View, 
-  TouchableOpacity, 
-  useColorScheme 
+import {
+  Image,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  useColorScheme
 } from "react-native";
 
 import { NavProps } from './components/Props';
-import { toStart, toPassportScan } from "./Navigations";
+import * as Navigations from "./Navigations";
 
 import { styles } from './styles/Home';
 
@@ -19,12 +21,17 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
   ];
   return (
     <View style={backgroundStyles}>
-      <TouchableOpacity onPress={() => toStart({navigation})}>
+      <TouchableOpacity onPress={() => Navigations.toStart({ navigation })}>
         <Image
-          style={styles.child}
+          style={styles.logo}
           resizeMode="cover"
           source={require("../assets/uniport.png")}
         />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.developerModeButton}
+        onPress={() => Navigations.toDeveloperMode({ navigation })}>
+        <Text style={styles.developerModeText}>{"Developer Mode"}</Text>
       </TouchableOpacity>
     </View>
   );
